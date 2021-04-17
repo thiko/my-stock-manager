@@ -22,6 +22,7 @@ public class StockResource {
     @Inject
     private StockService stockService;
 
+
     @GET
     public Set<Stock> getStocks() {
         return stockService.getAll()

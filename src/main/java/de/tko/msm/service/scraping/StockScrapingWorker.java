@@ -24,8 +24,6 @@ import java.net.URL;
 public class StockScrapingWorker {
 
     private static final String BASE_URL = "https://www.finanzen.net/";
-    private static final String SEARCH_TEMPLATE = BASE_URL + "suchergebnis.asp?_search={wknOrIsin}";
-
 
     public StockDo scrapeStock(String wknOrIsin) throws ScrapingException {
         if (StringUtils.isEmpty(wknOrIsin)) {
@@ -58,13 +56,17 @@ public class StockScrapingWorker {
 
     private String extractName(Document document) throws ScrapingException {
 
-        val stockName = getHeadlineTextContainerNode(document)
+        var stockName = getHeadlineTextContainerNode(document)
                 .childNodes()
                 .stream()
                 .filter(node -> node instanceof TextNode)
                 .map(node -> (TextNode) node)
                 .findFirst()
                 .orElseThrow(() -> new ScrapingException("Unable to find Name in text-container for given document on page: " + document.baseUri()));
+
+        if(stockName.text().contains("Aktie")) {
+            return stockName.text().substring(0, stockName.text().indexOf("Aktie") - 1).trim();
+        }
 
         return stockName.text().trim();
     }
