@@ -8,9 +8,9 @@ import java.time.LocalDate;
 
 @Data
 @Builder
-public class Dividends {
+public class DividendDo {
 
-    Stock stock;
+    StockDo stockDo;
     LocalDate issuedAt;
     BigDecimal money;
 }

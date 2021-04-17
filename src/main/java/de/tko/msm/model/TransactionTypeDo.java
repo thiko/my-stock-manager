@@ -1,6 +1,6 @@
 package de.tko.msm.model;
 
-public enum TransactionType {
+public enum TransactionTypeDo {
 
     BUY,
     SELL

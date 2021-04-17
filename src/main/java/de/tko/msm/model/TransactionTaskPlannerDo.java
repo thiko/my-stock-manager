@@ -8,9 +8,9 @@ import java.time.LocalDate;
 
 @Data
 @Builder
-public class TransactionTaskPlanner {
+public class TransactionTaskPlannerDo {
 
-    Stock stock;
+    StockDo stockDo;
     BigDecimal money;
     LocalDate validFrom;
     LocalDate validUntil;

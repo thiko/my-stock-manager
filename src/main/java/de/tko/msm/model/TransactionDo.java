@@ -8,11 +8,11 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class Transaction {
+public class TransactionDo {
 
     String issuer;
-    Stock stock;
-    TransactionType transactionType;
+    StockDo stockDo;
+    TransactionTypeDo transactionTypeDo;
     BigDecimal pricePerShare;
     int amountOfShares;
     LocalDateTime issuedAt;
